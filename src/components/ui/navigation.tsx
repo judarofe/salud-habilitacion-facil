@@ -69,8 +69,17 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              asChild
+            >
+              <a href="https://aula.camisalud.com" target="_blank" rel="noopener noreferrer">
+                Aula Virtual
+              </a>
+            </Button>
             <Button 
               variant="cta" 
               className="bg-gradient-cta shadow-cta hover:shadow-strong transition-all duration-300"
@@ -109,7 +118,16 @@ export function Navigation() {
                   {item.label}
                 </Link>
               ))}
-              <div className="px-3 py-2">
+              <div className="px-3 py-2 space-y-2">
+                <Button 
+                  variant="outline" 
+                  className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  asChild
+                >
+                  <a href="https://aula.camisalud.com" target="_blank" rel="noopener noreferrer">
+                    Aula Virtual
+                  </a>
+                </Button>
                 <Button 
                   variant="cta" 
                   className="w-full bg-gradient-cta shadow-cta"
