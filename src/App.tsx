@@ -9,7 +9,6 @@ import Normativa from "./pages/Normativa";
 import Servicios from "./pages/Servicios";
 import Metodologia from "./pages/Metodologia";
 import Beneficios from "./pages/Beneficios";
-import Paquetes from "./pages/Paquetes";
 import Contacto from "./pages/Contacto";
 import NotFound from "./pages/NotFound";
 
@@ -28,7 +27,6 @@ const App = () => (
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/metodologia" element={<Metodologia />} />
           <Route path="/beneficios" element={<Beneficios />} />
-          <Route path="/paquetes" element={<Paquetes />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
