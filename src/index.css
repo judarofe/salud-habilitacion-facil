@@ -11,50 +11,50 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Healthcare color palette */
+    /* Corporate color palette: #1f4f8c, #3cb07a, #e0cd62, #ffffff */
     --background: 0 0% 100%;
-    --foreground: 210 20% 15%;
+    --foreground: 214 63% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 20% 15%;
+    --card-foreground: 214 63% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 20% 15%;
+    --popover-foreground: 214 63% 20%;
 
-    /* Primary: Professional healthcare blue */
-    --primary: 210 85% 25%;
+    /* Primary: Corporate blue #1f4f8c */
+    --primary: 214 63% 34%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 210 85% 35%;
-    --primary-dark: 210 85% 18%;
+    --primary-light: 214 55% 45%;
+    --primary-dark: 214 63% 25%;
 
-    /* Secondary: Trust-building teal */
-    --secondary: 175 65% 30%;
+    /* Secondary: Corporate green #3cb07a */
+    --secondary: 153 48% 46%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-light: 175 65% 40%;
-    --secondary-dark: 175 65% 22%;
+    --secondary-light: 153 48% 56%;
+    --secondary-dark: 153 48% 36%;
 
-    /* Accent: Warm CTA orange */
-    --accent: 25 95% 55%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 25 95% 65%;
-    --accent-dark: 25 95% 45%;
+    /* Accent: Corporate gold #e0cd62 */
+    --accent: 49 67% 63%;
+    --accent-foreground: 214 63% 20%;
+    --accent-light: 49 67% 73%;
+    --accent-dark: 49 67% 50%;
 
-    /* Healthcare green for success/certifications */
-    --healthcare-green: 145 70% 35%;
-    --healthcare-green-light: 145 70% 45%;
+    /* Healthcare green (same as secondary) */
+    --healthcare-green: 153 48% 46%;
+    --healthcare-green-light: 153 48% 56%;
     --healthcare-green-foreground: 0 0% 100%;
 
     /* Neutral system */
-    --muted: 210 15% 96%;
-    --muted-foreground: 210 15% 45%;
-    --muted-dark: 210 15% 92%;
+    --muted: 214 15% 96%;
+    --muted-foreground: 214 15% 45%;
+    --muted-dark: 214 15% 92%;
 
     --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 15% 88%;
-    --input: 210 15% 95%;
-    --ring: 210 85% 25%;
+    --border: 214 15% 88%;
+    --input: 214 15% 95%;
+    --ring: 214 63% 34%;
 
     /* Gradients for visual appeal */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
@@ -93,44 +93,44 @@ All colors MUST be HSL.
 
   /* Dark mode for professional environments */
   .dark {
-    --background: 210 25% 8%;
-    --foreground: 210 15% 92%;
+    --background: 214 30% 8%;
+    --foreground: 214 15% 92%;
 
-    --card: 210 25% 10%;
-    --card-foreground: 210 15% 92%;
+    --card: 214 30% 10%;
+    --card-foreground: 214 15% 92%;
 
-    --popover: 210 25% 10%;
-    --popover-foreground: 210 15% 92%;
+    --popover: 214 30% 10%;
+    --popover-foreground: 214 15% 92%;
 
-    --primary: 210 85% 45%;
+    --primary: 214 63% 45%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 210 85% 55%;
-    --primary-dark: 210 85% 35%;
+    --primary-light: 214 55% 55%;
+    --primary-dark: 214 63% 35%;
 
-    --secondary: 175 65% 45%;
+    --secondary: 153 48% 50%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-light: 175 65% 55%;
-    --secondary-dark: 175 65% 35%;
+    --secondary-light: 153 48% 60%;
+    --secondary-dark: 153 48% 40%;
 
-    --accent: 25 95% 60%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 25 95% 70%;
-    --accent-dark: 25 95% 50%;
+    --accent: 49 67% 65%;
+    --accent-foreground: 214 63% 15%;
+    --accent-light: 49 67% 75%;
+    --accent-dark: 49 67% 55%;
 
-    --healthcare-green: 145 70% 50%;
-    --healthcare-green-light: 145 70% 60%;
+    --healthcare-green: 153 48% 50%;
+    --healthcare-green-light: 153 48% 60%;
     --healthcare-green-foreground: 0 0% 100%;
 
-    --muted: 210 25% 15%;
-    --muted-foreground: 210 15% 65%;
-    --muted-dark: 210 25% 12%;
+    --muted: 214 25% 15%;
+    --muted-foreground: 214 15% 65%;
+    --muted-dark: 214 25% 12%;
 
     --destructive: 0 75% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 25% 20%;
-    --input: 210 25% 15%;
-    --ring: 210 85% 45%;
+    --border: 214 25% 20%;
+    --input: 214 25% 15%;
+    --ring: 214 63% 45%;
 
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
     --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-light)));
