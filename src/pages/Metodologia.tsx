@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
-import { Search, FileEdit, Users, Send, CheckCircle, ArrowRight } from "lucide-react";
+import { Search, FileEdit, Users, Send, CheckCircle, ArrowRight, UserCheck, Building2, Package, Pill, ClipboardList, FileText, Link2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const pasos = [
@@ -132,6 +132,63 @@ const Metodologia = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 7 Estándares de Habilitación */}
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-4 text-foreground">Los 7 Estándares de Habilitación</h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Según la Resolución 3100 de 2019, todo prestador de servicios de salud debe cumplir con estos estándares para obtener y mantener su habilitación.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
+              {[
+                {
+                  icon: UserCheck,
+                  titulo: "Talento Humano",
+                  descripcion: "Condiciones del recurso humano requerido: perfiles, formación, certificaciones y competencias del personal asistencial y administrativo."
+                },
+                {
+                  icon: Building2,
+                  titulo: "Infraestructura",
+                  descripcion: "Condiciones físicas y de mantenimiento de las instalaciones: áreas, acabados, señalización, accesibilidad y cumplimiento de normas técnicas."
+                },
+                {
+                  icon: Package,
+                  titulo: "Dotación",
+                  descripcion: "Equipos, mobiliario y elementos necesarios para la prestación del servicio, incluyendo su mantenimiento preventivo y correctivo."
+                },
+                {
+                  icon: Pill,
+                  titulo: "Medicamentos, Dispositivos Médicos e Insumos",
+                  descripcion: "Gestión de medicamentos, dispositivos médicos e insumos: selección, adquisición, almacenamiento, dispensación y farmacovigilancia."
+                },
+                {
+                  icon: ClipboardList,
+                  titulo: "Procesos Prioritarios",
+                  descripcion: "Procesos asistenciales críticos que garantizan la seguridad del paciente: guías clínicas, protocolos, procedimientos y programas de seguridad."
+                },
+                {
+                  icon: FileText,
+                  titulo: "Historia Clínica y Registros",
+                  descripcion: "Gestión documental de la historia clínica: diligenciamiento, custodia, conservación, confidencialidad y archivo según la normativa vigente."
+                },
+                {
+                  icon: Link2,
+                  titulo: "Interdependencia",
+                  descripcion: "Relación entre servicios que requieren de otros para su funcionamiento, garantizando disponibilidad y articulación de servicios de apoyo."
+                }
+              ].map((estandar, index) => (
+                <div key={index} className="bg-card rounded-xl p-6 shadow-healthcare hover-lift border border-border">
+                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
+                    <estandar.icon className="h-6 w-6 text-secondary" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">{estandar.titulo}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{estandar.descripcion}</p>
                 </div>
               ))}
             </div>
