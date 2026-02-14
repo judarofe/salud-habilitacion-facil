@@ -37,6 +37,17 @@ const normativas = [
       "Sistema de Información para la Calidad"
     ],
     enlace: "https://www.minsalud.gov.co/Normatividad_Nuevo/DECRETO%201011%20DE%202006.pdf"
+  },
+  {
+    titulo: "Decreto 780 de 2016",
+    descripcion: "Decreto Único Reglamentario del Sector Salud y Protección Social. Compila y organiza las normas reglamentarias del sector salud en Colombia.",
+    puntosClave: [
+      "Regulación del Sistema General de Seguridad Social en Salud",
+      "Prestación de servicios de salud",
+      "Aseguramiento en salud",
+      "Inspección, vigilancia y control del sector"
+    ],
+    enlace: "https://www.minsalud.gov.co/Normatividad_Nuevo/Decreto%200780%20de%202016.pdf"
   }
 ];
 
