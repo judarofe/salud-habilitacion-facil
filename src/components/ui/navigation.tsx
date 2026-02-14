@@ -20,7 +20,7 @@ export function Navigation() {
   const location = useLocation();
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b shadow-healthcare">
+    <nav className="sticky top-0 z-50 bg-primary border-b shadow-healthcare">
       {/* Top contact bar */}
       <div className="bg-gradient-hero text-white py-2">
         <div className="container mx-auto px-4">
@@ -44,8 +44,8 @@ export function Navigation() {
           <Link to="/" className="flex items-center space-x-2">
             <img src={camisaludLogo} alt="CAMISALUD Logo" className="w-10 h-10 rounded-lg object-contain" />
             <div className="flex flex-col">
-              <span className="font-bold text-lg text-gradient-primary">CAMISALUD</span>
-              <span className="text-xs text-muted-foreground">Habilitación en Salud</span>
+              <span className="font-bold text-lg text-primary-foreground">CAMISALUD</span>
+              <span className="text-xs text-primary-foreground/80">Habilitación en Salud</span>
             </div>
           </Link>
 
@@ -56,10 +56,10 @@ export function Navigation() {
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-primary hover:bg-muted",
+                  "px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-accent hover:bg-primary-light",
                   location.pathname === item.href
-                    ? "text-primary bg-muted"
-                    : "text-muted-foreground"
+                    ? "text-accent bg-primary-light"
+                    : "text-primary-foreground"
                 )}
               >
                 {item.label}
@@ -71,7 +71,7 @@ export function Navigation() {
           <div className="hidden lg:block">
             <Button 
               variant="outline" 
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all duration-300"
               asChild
             >
               <a href="https://aula.camisalud.com" target="_blank" rel="noopener noreferrer">
@@ -84,7 +84,7 @@ export function Navigation() {
           <Button
             variant="outline"
             size="sm"
-            className="lg:hidden"
+            className="lg:hidden border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -94,7 +94,7 @@ export function Navigation() {
         {/* Mobile navigation */}
         {isOpen && (
           <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-muted rounded-lg mb-4">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-primary-dark rounded-lg mb-4">
               {navigationItems.map((item) => (
                 <Link
                   key={item.href}
@@ -102,8 +102,8 @@ export function Navigation() {
                   className={cn(
                     "block px-3 py-2 rounded-md text-base font-medium transition-colors",
                     location.pathname === item.href
-                      ? "text-primary bg-background"
-                      : "text-muted-foreground hover:text-primary hover:bg-background"
+                      ? "text-accent bg-primary-light"
+                      : "text-primary-foreground hover:text-accent hover:bg-primary-light"
                   )}
                   onClick={() => setIsOpen(false)}
                 >
@@ -113,7 +113,7 @@ export function Navigation() {
               <div className="px-3 py-2">
                 <Button 
                   variant="outline" 
-                  className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="w-full border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
                   asChild
                 >
                   <a href="https://aula.camisalud.com" target="_blank" rel="noopener noreferrer">
