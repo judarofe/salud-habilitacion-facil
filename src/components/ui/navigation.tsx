@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import camisaludLogo from "@/assets/camisalud-logo.png";
 
 const navigationItems = [
   { href: "/", label: "Inicio" },
@@ -42,9 +43,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">C</span>
-            </div>
+            <img src={camisaludLogo} alt="CAMISALUD Logo" className="w-10 h-10 rounded-lg object-contain" />
             <div className="flex flex-col">
               <span className="font-bold text-lg text-gradient-primary">CAMISALUD</span>
               <span className="text-xs text-muted-foreground">Habilitación en Salud</span>
