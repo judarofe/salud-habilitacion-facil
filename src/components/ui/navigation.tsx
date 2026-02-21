@@ -74,9 +74,9 @@ export function Navigation() {
               className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all duration-300"
               asChild
             >
-              <a href="https://aula.camisalud.com" target="_blank" rel="noopener noreferrer">
+              <Link to="/aula-virtual">
                 Aula Virtual
-              </a>
+              </Link>
             </Button>
           </div>
 
@@ -116,9 +116,9 @@ export function Navigation() {
                   className="w-full border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
                   asChild
                 >
-                  <a href="https://aula.camisalud.com" target="_blank" rel="noopener noreferrer">
+                  <Link to="/aula-virtual">
                     Aula Virtual
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </div>
