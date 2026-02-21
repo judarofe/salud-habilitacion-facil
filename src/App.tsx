@@ -10,6 +10,7 @@ import Servicios from "./pages/Servicios";
 import Metodologia from "./pages/Metodologia";
 import Beneficios from "./pages/Beneficios";
 import Contacto from "./pages/Contacto";
+import AulaVirtual from "./pages/AulaVirtual";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/metodologia" element={<Metodologia />} />
           <Route path="/beneficios" element={<Beneficios />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="/aula-virtual" element={<AulaVirtual />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
