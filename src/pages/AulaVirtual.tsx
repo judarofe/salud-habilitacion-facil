@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   ShoppingCart,
@@ -15,7 +14,7 @@ import {
   Minus,
   LogIn,
   User,
-  Lock,
+  
   BookOpen,
   Clock,
   Award,
@@ -154,7 +153,7 @@ const AulaVirtual = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("all");
   const [loginTab, setLoginTab] = useState<"login" | "register">("login");
-  const [showLogin, setShowLogin] = useState(false);
+  
 
   const addToCart = (course: Course) => {
     setCart((prev) => {
@@ -184,27 +183,32 @@ const AulaVirtual = () => {
             <p className="text-xl opacity-90 max-w-2xl mx-auto mb-8">
               Capacítate en habilitación, auditoría y calidad en salud con nuestros cursos especializados.
             </p>
-            <div className="flex justify-center gap-4">
-              <Button
-                variant="hero"
-                size="lg"
-                onClick={() => setShowLogin(true)}
-              >
-                <LogIn className="mr-2 h-5 w-5" /> Iniciar Sesión
-              </Button>
-              <Button
-                variant="cta"
-                size="lg"
-                className="relative"
-                onClick={() => setCartOpen(!cartOpen)}
-              >
-                <ShoppingCart className="mr-2 h-5 w-5" /> Carrito
-                {cart.length > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold">
-                    {cart.length}
-                  </span>
-                )}
-              </Button>
+            {/* Login/Register inline */}
+            <div className="max-w-md mx-auto mt-8 bg-white/10 backdrop-blur-sm rounded-xl p-6">
+              <Tabs value={loginTab} onValueChange={(v) => setLoginTab(v as "login" | "register")}>
+                <TabsList className="w-full bg-white/20">
+                  <TabsTrigger value="login" className="flex-1 data-[state=active]:bg-white data-[state=active]:text-primary">Iniciar Sesión</TabsTrigger>
+                  <TabsTrigger value="register" className="flex-1 data-[state=active]:bg-white data-[state=active]:text-primary">Registrarse</TabsTrigger>
+                </TabsList>
+                <TabsContent value="login" className="space-y-3 mt-4">
+                  <Input type="email" placeholder="Correo electrónico" className="bg-white/90 text-foreground" />
+                  <Input type="password" placeholder="Contraseña" className="bg-white/90 text-foreground" />
+                  <Button className="w-full" variant="cta">
+                    <LogIn className="mr-2 h-4 w-4" /> Ingresar
+                  </Button>
+                  <p className="text-xs text-center opacity-80">
+                    ¿Olvidaste tu contraseña? <a href="#" className="underline">Recupérala aquí</a>
+                  </p>
+                </TabsContent>
+                <TabsContent value="register" className="space-y-3 mt-4">
+                  <Input placeholder="Nombre completo" className="bg-white/90 text-foreground" />
+                  <Input type="email" placeholder="Correo electrónico" className="bg-white/90 text-foreground" />
+                  <Input type="password" placeholder="Contraseña" className="bg-white/90 text-foreground" />
+                  <Button className="w-full" variant="cta">
+                    <User className="mr-2 h-4 w-4" /> Crear Cuenta
+                  </Button>
+                </TabsContent>
+              </Tabs>
             </div>
           </div>
         </section>
@@ -331,56 +335,6 @@ const AulaVirtual = () => {
                 )}
               </Card>
 
-              {/* Login Section */}
-              <Card className={`${showLogin ? "" : "hidden lg:block"}`}>
-                <CardHeader className="bg-primary rounded-t-lg">
-                  <CardTitle className="text-primary-foreground flex items-center gap-2">
-                    <User className="h-5 w-5" /> Acceso al Aula Virtual
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-4">
-                  <Tabs value={loginTab} onValueChange={(v) => setLoginTab(v as "login" | "register")}>
-                    <TabsList className="w-full">
-                      <TabsTrigger value="login" className="flex-1">Iniciar Sesión</TabsTrigger>
-                      <TabsTrigger value="register" className="flex-1">Registrarse</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="login" className="space-y-4 mt-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Correo electrónico</Label>
-                        <Input id="email" type="email" placeholder="tu@correo.com" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="password">Contraseña</Label>
-                        <Input id="password" type="password" placeholder="••••••••" />
-                      </div>
-                      <Button className="w-full" variant="default">
-                        <LogIn className="mr-2 h-4 w-4" /> Ingresar
-                      </Button>
-                      <p className="text-xs text-center text-muted-foreground">
-                        ¿Olvidaste tu contraseña?{" "}
-                        <a href="#" className="text-primary hover:underline">Recupérala aquí</a>
-                      </p>
-                    </TabsContent>
-                    <TabsContent value="register" className="space-y-4 mt-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="reg-name">Nombre completo</Label>
-                        <Input id="reg-name" placeholder="Tu nombre" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="reg-email">Correo electrónico</Label>
-                        <Input id="reg-email" type="email" placeholder="tu@correo.com" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="reg-password">Contraseña</Label>
-                        <Input id="reg-password" type="password" placeholder="••••••••" />
-                      </div>
-                      <Button className="w-full" variant="default">
-                        <User className="mr-2 h-4 w-4" /> Crear Cuenta
-                      </Button>
-                    </TabsContent>
-                  </Tabs>
-                </CardContent>
-              </Card>
             </aside>
           </div>
         </div>
