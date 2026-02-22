@@ -85,6 +85,7 @@ export const RegistrationForm = ({ onCancel }: { onCancel?: () => void }) => {
     firstLastName: "",
     secondLastName: "",
     alias: "",
+    idType: "CC",
     idNumber: "",
     phone1: "",
     phone2: "",
@@ -380,6 +381,32 @@ export const RegistrationForm = ({ onCancel }: { onCancel?: () => void }) => {
               value={form.alias}
               onChange={(e) => update("alias", e.target.value)}
             />
+          </div>
+          <div className="space-y-1.5">
+            <FieldLabel htmlFor="idType" required>
+              Tipo de documento
+            </FieldLabel>
+            <Select
+              value={form.idType}
+              onValueChange={(v) => update("idType", v)}
+            >
+              <SelectTrigger className="bg-background">
+                <SelectValue placeholder="Seleccionar tipo" />
+              </SelectTrigger>
+              <SelectContent className="bg-background z-50">
+                {[
+                  { value: "CC", label: "Cédula de Ciudadanía" },
+                  { value: "CE", label: "Cédula de Extranjería" },
+                  { value: "TI", label: "Tarjeta de Identidad" },
+                  { value: "PA", label: "Pasaporte" },
+                  { value: "NIT", label: "NIT" },
+                ].map((doc) => (
+                  <SelectItem key={doc.value} value={doc.value}>
+                    {doc.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           <div className="space-y-1.5">
             <FieldLabel htmlFor="idNumber" required>
