@@ -5,7 +5,7 @@ import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { RegistrationForm } from "@/components/RegistrationForm";
 import {
   ShoppingCart,
@@ -149,7 +149,7 @@ const AulaVirtual = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("all");
-  const [loginTab, setLoginTab] = useState<"login" | "register">("login");
+  const [registerOpen, setRegisterOpen] = useState(false);
 
   const addToCart = (course: Course) => {
     setCart((prev) => {
@@ -185,21 +185,17 @@ const AulaVirtual = () => {
                 variant="cta"
                 size="lg"
                 className="text-lg px-8"
-                onClick={() => {
-                  setLoginTab("login");
-                  document.getElementById("auth-section")?.scrollIntoView({ behavior: "smooth" });
-                }}
+                asChild
               >
-                <LogIn className="mr-2 h-5 w-5" /> Iniciar Sesión
+                <a href="/login">
+                  <LogIn className="mr-2 h-5 w-5" /> Iniciar Sesión
+                </a>
               </Button>
               <Button
                 variant="hero"
                 size="lg"
                 className="text-lg px-8"
-                onClick={() => {
-                  setLoginTab("register");
-                  document.getElementById("auth-section")?.scrollIntoView({ behavior: "smooth" });
-                }}
+                onClick={() => setRegisterOpen(true)}
               >
                 Registrarse
               </Button>
@@ -332,49 +328,21 @@ const AulaVirtual = () => {
             </aside>
           </div>
 
-          {/* Auth Section */}
-          <div id="auth-section" className="mt-16 scroll-mt-32">
-            <Tabs value={loginTab} onValueChange={(v) => setLoginTab(v as "login" | "register")}>
-              <TabsList className="w-full max-w-md bg-muted">
-                <TabsTrigger value="login" className="flex-1">Iniciar Sesión</TabsTrigger>
-                <TabsTrigger value="register" className="flex-1">Registrarse</TabsTrigger>
-              </TabsList>
-              <TabsContent value="login" className="mt-6">
-                <Card className="max-w-md">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <LogIn className="h-5 w-5 text-primary" /> Iniciar Sesión
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground text-sm">
-                      Accede al aula virtual con tu cuenta registrada.
-                    </p>
-                    <Button variant="cta" size="lg" className="w-full" asChild>
-                      <a href="/login">
-                        <LogIn className="mr-2 h-4 w-4" /> Ir a Iniciar Sesión
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="register" className="mt-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-xl">Crear una cuenta nueva</CardTitle>
-                    <p className="text-sm text-muted-foreground">
-                      Completa el formulario para registrarte en el Aula Virtual CAMISALUD.
-                    </p>
-                  </CardHeader>
-                  <CardContent>
-                    <RegistrationForm onCancel={() => setLoginTab("login")} />
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </div>
         </div>
       </main>
+
+      {/* Registration Modal */}
+      <Dialog open={registerOpen} onOpenChange={setRegisterOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-xl">Crear una cuenta nueva</DialogTitle>
+            <p className="text-sm text-muted-foreground">
+              Completa el formulario para registrarte en el Aula Virtual CAMISALUD.
+            </p>
+          </DialogHeader>
+          <RegistrationForm onCancel={() => setRegisterOpen(false)} />
+        </DialogContent>
+      </Dialog>
       <Footer />
       <WhatsAppFloat />
     </div>
