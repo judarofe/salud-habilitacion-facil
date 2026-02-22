@@ -5,16 +5,13 @@ import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { RegistrationForm } from "@/components/RegistrationForm";
 import {
   ShoppingCart,
   X,
   Plus,
-  Minus,
   LogIn,
-  User,
-  
   BookOpen,
   Clock,
   Award,
@@ -153,7 +150,6 @@ const AulaVirtual = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("all");
   const [loginTab, setLoginTab] = useState<"login" | "register">("login");
-  
 
   const addToCart = (course: Course) => {
     setCart((prev) => {
@@ -184,31 +180,29 @@ const AulaVirtual = () => {
               Capacítate en habilitación, auditoría y calidad en salud con nuestros cursos especializados.
             </p>
             {/* Login/Register inline */}
-            <div className="max-w-md mx-auto mt-8 bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <Tabs value={loginTab} onValueChange={(v) => setLoginTab(v as "login" | "register")}>
-                <TabsList className="w-full bg-white/20">
-                  <TabsTrigger value="login" className="flex-1 data-[state=active]:bg-white data-[state=active]:text-primary">Iniciar Sesión</TabsTrigger>
-                  <TabsTrigger value="register" className="flex-1 data-[state=active]:bg-white data-[state=active]:text-primary">Registrarse</TabsTrigger>
-                </TabsList>
-                <TabsContent value="login" className="space-y-3 mt-4">
-                  <Input type="email" placeholder="Correo electrónico" className="bg-white/90 text-foreground" />
-                  <Input type="password" placeholder="Contraseña" className="bg-white/90 text-foreground" />
-                  <Button className="w-full" variant="cta">
-                    <LogIn className="mr-2 h-4 w-4" /> Ingresar
-                  </Button>
-                  <p className="text-xs text-center opacity-80">
-                    ¿Olvidaste tu contraseña? <a href="#" className="underline">Recupérala aquí</a>
-                  </p>
-                </TabsContent>
-                <TabsContent value="register" className="space-y-3 mt-4">
-                  <Input placeholder="Nombre completo" className="bg-white/90 text-foreground" />
-                  <Input type="email" placeholder="Correo electrónico" className="bg-white/90 text-foreground" />
-                  <Input type="password" placeholder="Contraseña" className="bg-white/90 text-foreground" />
-                  <Button className="w-full" variant="cta">
-                    <User className="mr-2 h-4 w-4" /> Crear Cuenta
-                  </Button>
-                </TabsContent>
-              </Tabs>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <Button
+                variant="cta"
+                size="lg"
+                className="text-lg px-8"
+                onClick={() => {
+                  setLoginTab("login");
+                  document.getElementById("auth-section")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <LogIn className="mr-2 h-5 w-5" /> Iniciar Sesión
+              </Button>
+              <Button
+                variant="hero"
+                size="lg"
+                className="text-lg px-8"
+                onClick={() => {
+                  setLoginTab("register");
+                  document.getElementById("auth-section")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Registrarse
+              </Button>
             </div>
           </div>
         </section>
@@ -336,6 +330,48 @@ const AulaVirtual = () => {
               </Card>
 
             </aside>
+          </div>
+
+          {/* Auth Section */}
+          <div id="auth-section" className="mt-16 scroll-mt-32">
+            <Tabs value={loginTab} onValueChange={(v) => setLoginTab(v as "login" | "register")}>
+              <TabsList className="w-full max-w-md bg-muted">
+                <TabsTrigger value="login" className="flex-1">Iniciar Sesión</TabsTrigger>
+                <TabsTrigger value="register" className="flex-1">Registrarse</TabsTrigger>
+              </TabsList>
+              <TabsContent value="login" className="mt-6">
+                <Card className="max-w-md">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <LogIn className="h-5 w-5 text-primary" /> Iniciar Sesión
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground text-sm">
+                      Accede al aula virtual con tu cuenta registrada.
+                    </p>
+                    <Button variant="cta" size="lg" className="w-full" asChild>
+                      <a href="/login">
+                        <LogIn className="mr-2 h-4 w-4" /> Ir a Iniciar Sesión
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="register" className="mt-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-xl">Crear una cuenta nueva</CardTitle>
+                    <p className="text-sm text-muted-foreground">
+                      Completa el formulario para registrarte en el Aula Virtual CAMISALUD.
+                    </p>
+                  </CardHeader>
+                  <CardContent>
+                    <RegistrationForm onCancel={() => setLoginTab("login")} />
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </main>
